@@ -55,3 +55,7 @@ Then it is time to code the microcontroller that you are using. You should choos
 - Use existing project, and choose the Firebase project that you created
 - Hit enter twice
 - Type N twice
+
+---
+
+Anaother description can be found at this <a href = "https://fab.cba.mit.edu/classes/863.22/Harvard/people/Daniel/Week%2010/week10.html">website</a>
