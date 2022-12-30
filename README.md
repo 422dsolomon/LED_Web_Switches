@@ -58,4 +58,4 @@ Then it is time to code the microcontroller that you are using. You should choos
 
 ---
 
-Anaother description can be found at this <a href = "https://fab.cba.mit.edu/classes/863.22/Harvard/people/Daniel/Week%2010/week10.html">website</a>
+Another description can be found at this <a href = "https://fab.cba.mit.edu/classes/863.22/Harvard/people/Daniel/Week%2010/week10.html">website</a>
