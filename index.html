@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Firebase Enabled LED Switches</title>
+  </head>
+  <body>
+    <h1>Turn on and Off LED 1 and 2</h1>
+    <div>
+      <button id="turn-on_1" name="turnon_1">Turn On LED 1</button>
+      <button id="turn-off_1" name="turnoff_1">Turn Off LED 1</button>
+    </div>
+    <!-- <br> -->
+    <div>
+      <button id="turn-on_2" name="turnon_2">Turn On LED 2</button>
+      <button id="turn-off_2" name="turnoff_2">Turn Off LED 2</button>
+    </div>
+    <button id="start" >Start</button>
+    <div>
+
+    </div>
+
+    <!-- Config -->
+
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+    
+      // Your web app's Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyA9lU2wZuMzjj69MrLptpI-iZ8Qko3JE3s",
+        authDomain: "esp32-led-7f940.firebaseapp.com",
+        databaseURL: "https://esp32-led-7f940-default-rtdb.firebaseio.com",
+        projectId: "esp32-led-7f940",
+        storageBucket: "esp32-led-7f940.appspot.com",
+        messagingSenderId: "530594597569",
+        appId: "1:530594597569:web:689c3bae65d5dcbbe16240"
+      };
+    
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+
+
+      import {getDatabase, ref, get, set, child, update, remove}
+      from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
+
+      const db = getDatabase();
+      const auth = firebase.auth();
+
+      // ----------------- Refs ---------------//
+      var onBtn1 = document.getElementById("turn-on_1");
+      var offBtn1 = document.getElementById("turn-off_1");
+      var onBtn2 = document.getElementById("turn-on_2");
+      var offBtn2 = document.getElementById("turn-off_2");
+
+      var start = document.getElementById("start");
+
+      // ------------- INSERT DAATA FUNCTION --------//
+      function InsertData(){
+        set(ref(db,"LED_STATUS"),{
+          LED_STATUS_1: "OFF",
+          LED_STATUS_2: "OFF"
+        })
+        .then(()=> {
+          alert("data stored successfully")
+        })
+        .catch((error)=>{
+          alert("unsuccessful, error"+error)
+        });
+      }
+
+      //-----------UPDATE DATA FUNCTION----------//
+      function turnOn_1(){
+        update(ref(db,"LED_STATUS/"),{
+          LED_STATUS_1: "ON",
+        })
+        .then(()=> {
+          alert("data updated successfully")
+        })
+        .catch((error)=>{
+          alert("unsuccessful, error"+error)
+        });
+      }
+
+      function turnOff_1(){
+        update(ref(db,"LED_STATUS/"),{
+          LED_STATUS_1: "OFF",
+        })
+        .then(()=> {
+          alert("data updated successfully")
+        })
+        .catch((error)=>{
+          alert("unsuccessful, error"+error)
+        });
+      }
+
+      function turnOn_2(){
+        update(ref(db,"LED_STATUS/"),{
+          LED_STATUS_2: "ON",
+        })
+        .then(()=> {
+          alert("data updated successfully")
+        })
+        .catch((error)=>{
+          alert("unsuccessful, error"+error)
+        });
+      }
+      function turnOff_2(){
+        update(ref(db,"LED_STATUS/"),{
+          LED_STATUS_2: "OFF",
+        })
+        .then(()=> {
+          alert("data updated successfully")
+        })
+        .catch((error)=>{
+          alert("unsuccessful, error"+error)
+        });
+      }
+
+      //------------- EVENTS To BTNs -------------//
+      onBtn1.addEventListener('click', turnOn_1);
+      offBtn1.addEventListener('click', turnOff_1);
+      onBtn2.addEventListener('click', turnOn_2);
+      offBtn2.addEventListener('click', turnOff_2);
+      start.addEventListener('click', InsertData);
+    </script>
+  </body>
+</html>
